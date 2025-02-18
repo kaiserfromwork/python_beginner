@@ -1,5 +1,6 @@
 import random
 
+
 # compares players moves using a dict and returns the tie players have same input otherwise returns winner
 def winner_logic(p1: str, p2: str) -> str:
     winner_conditions = {
@@ -62,5 +63,4 @@ while True:
     else:
         print("It's a TIE! Win count remains the same")
 
-
-    print(f'Score:\n\tPlayer 1: {player_1_counter}\n\tPlayer 2:{ai_player_counter}')
+    print(f'Score: \n\tPlayer 1: {player_1_counter}\n\tPlayer 2: {ai_player_counter}')

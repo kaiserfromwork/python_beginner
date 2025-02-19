@@ -2,36 +2,35 @@ import random
 
 from word_list import easy_words
 
-print("Hangman game!\nLet's start!")
+print("Hangman game!\nLet's start!\n")
 
 #Word for hangman game taken from list in world_list file. using random gen to get word
 word = easy_words[random.randint(0, len(easy_words) - 1)]
-guess_word = ["_" for x in range(0, len(word))]
-words_used = []
+guessing = ["_" for x in range(0, len(word))]
+
+
+letters_guessed = []
 counter = 0
-alphabet = [
-    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
-    "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
-]
 while True:
-    if "_" in guess_word:
-        print(word) # TODO for debugging - DELETE LATER
-        print(f'Words already guessed: {words_used}')
+    if guessing == list(word):
+        print(f"GOOD JOB! You correctly guessed the word!\n")
+        break
+    elif "_" in guessing:
+        print(f'{f"Letters guessed: {letters_guessed}" if len(letters_guessed) > 0 else "No letters guessed yet!"}')
+        #print(f'Words already guessed: {letters_guessed if len(letters_guessed) > 0 else 0}')
         letter = input("Guess a letter!\n").lower()
-        if letter in alphabet and letter not in words_used:
+        if letter.isalpha() and len(letter) and letter not in letters_guessed:
             if letter in word:
-                print(f'Nice guess! Letter {letter} is in the word!')
+                print(f'Nice guess! Letter {letter} is in the word!\n')
                 index = word.index(letter)
-                guess_word[index] = letter
-                print(guess_word)
-                words_used.append(letter)
+                guessing[index] = letter
+                print(guessing)
+                letters_guessed.append(letter)
             else:
-                print(f'Bad guess. Letter {letter} is not in the word!')
-                words_used.append(letter)
+                print(f'Bad guess. Letter {letter} is not in the word!\n')
+                letters_guessed.append(letter)
         else:
-            print("Letter already used!" if letter in words_used else "Letter not in alphabet!")
-    elif guess_word == word:
-        print(f"GOOD JOB! You correctly guessed the word!")
+            print("Letter already guessed!\n" if letter in letters_guessed else "Not a valid guess!\n")
     else:
         break
 

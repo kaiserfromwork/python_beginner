@@ -14,11 +14,12 @@ counter = 0
 
 
 while True:
+    print(f"{'Word: ' + ' '.join(guessing)}")
     if guessing == list(word):
         print(f"GOOD JOB! You correctly guessed the word!\n")
         break
     elif "_" in guessing:
-        print(f'{f"Letters guessed: {letters_guessed}" if len(letters_guessed) > 0 else "No letters guessed yet!"}')
+        print(f"{('Letters guessed: ' + ', '.join(letters_guessed)) if len(letters_guessed) > 0 else 'Good Luck!'}")
         #print(f'Words already guessed: {letters_guessed if len(letters_guessed) > 0 else 0}')
         letter = input("Guess a letter!\n").lower()
         if letter.isalpha() and len(letter) == 1 and letter not in letters_guessed:

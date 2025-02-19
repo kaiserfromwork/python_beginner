@@ -11,6 +11,8 @@ guessing = ["_" for x in range(0, len(word))]
 
 letters_guessed = []
 counter = 0
+
+
 while True:
     if guessing == list(word):
         print(f"GOOD JOB! You correctly guessed the word!\n")
@@ -19,7 +21,7 @@ while True:
         print(f'{f"Letters guessed: {letters_guessed}" if len(letters_guessed) > 0 else "No letters guessed yet!"}')
         #print(f'Words already guessed: {letters_guessed if len(letters_guessed) > 0 else 0}')
         letter = input("Guess a letter!\n").lower()
-        if letter.isalpha() and len(letter) and letter not in letters_guessed:
+        if letter.isalpha() and len(letter) == 1 and letter not in letters_guessed:
             if letter in word:
                 print(f'Nice guess! Letter {letter} is in the word!\n')
                 #replaces all occurances of the letter

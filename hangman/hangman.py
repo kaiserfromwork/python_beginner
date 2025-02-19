@@ -22,9 +22,10 @@ while True:
         if letter.isalpha() and len(letter) and letter not in letters_guessed:
             if letter in word:
                 print(f'Nice guess! Letter {letter} is in the word!\n')
-                index = word.index(letter)
-                guessing[index] = letter
-                print(guessing)
+                #replaces all occurances of the letter
+                for index, char in enumerate(word):
+                    if char == letter:
+                        guessing[index] = letter
                 letters_guessed.append(letter)
             else:
                 print(f'Bad guess. Letter {letter} is not in the word!\n')
